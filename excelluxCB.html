@@ -329,6 +329,7 @@
                     </div>
                     <button type="submit" class="submit-btn" id="submitBtn">
                         <span id="btnText">Reveal Cashback</span>
+                        <span id="btnLoader" class="loading hidden"></span>
                     </button>
                 </form>
             </div>
@@ -391,6 +392,7 @@
             
             // Show loading
             document.getElementById('btnText').classList.add('hidden');
+            document.getElementById('btnLoader').classList.remove('hidden');
             document.getElementById('submitBtn').disabled = true;
             
             // Simulate form processing
