@@ -3,82 +3,516 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Excellux - Scratch & Win</title>
-    
+    <title>Excellux - Cashback</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="css/cb.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #d4af37 0%, #f4e5b8 50%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            color: #999;
+            margin-bottom: 35px;
+            letter-spacing: 3px;
+            font-weight: 300;
+            text-transform: uppercase;
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px 25px;
+            margin-bottom: 20px;
+        }
+
+        .form-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: #d4af37;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 11px;
+            color: #999;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 15px;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.12);
+            border-color: #d4af37;
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #d4af37 0%, #c9a952 100%);
+            color: #1a1a1a;
+            border: none;
+            padding: 16px 40px;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            width: 100%;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .submit-btn:active {
+            transform: scale(0.98);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .instruction {
+            font-size: 15px;
+            color: #ccc;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        .scratch-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1;
+            max-width: 350px;
+            margin: 0 auto 15px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .prize-layer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            padding: 20px;
+        }
+
+        .prize-amount {
+            font-family: 'Playfair Display', serif;
+            font-size: 56px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #d4af37 0%, #f4e5b8 50%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .sorry-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            color: #999;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            cursor: pointer;
+            touch-action: none;
+        }
+
+        .terms {
+            font-size: 11px;
+            color: #666;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: rgba(30, 30, 30, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            padding: 40px 30px;
+            max-width: 350px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: modalSlideIn 0.4s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: #d4af37;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .modal-message {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            color: #ccc;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .modal-btn {
+            background: linear-gradient(135deg, #d4af37 0%, #c9a952 100%);
+            color: #1a1a1a;
+            border: none;
+            padding: 14px 35px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .modal-btn:active {
+            transform: scale(0.98);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border: 2.5px solid rgba(26, 26, 26, 0.3);
+            border-radius: 50%;
+            border-top-color: #1a1a1a;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <div class="logo">EXCELLUX</div>
-        <div class="subtitle">LUXURY REWARDS</div>
-        <div class="instruction">Scratch to reveal your prize</div>
+        <div class="subtitle">Cashback Campaign</div>
         
-        <div class="scratch-container hidden" id="scratchContainer">
-            <div class="prize-layer">
-                <div class="prize-text">YOU WON</div>
-                <div class="prize-amount" id="prizeAmount"></div>
+        <!-- Form Section -->
+        <div id="formSection">
+            <div class="form-container">
+                <div class="form-title">Claim Your Cashback</div>
+                <form id="cashback-form" name="cashback-campaign-form" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="cashback-campaign-form" />
+                    <p class="hidden">
+                        <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                    </p>
+                    
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" name="name" id="nameInput" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" name="phone" id="phoneInput" placeholder="Enter phone number" pattern="[0-9]{10}" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Invoice Number</label>
+                        <input type="text" name="invoice" id="invoiceInput" placeholder="Enter invoice number" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Invoice Amount (₹)</label>
+                        <input type="number" name="amount" id="amountInput" placeholder="Enter amount" min="0" step="0.01" required>
+                    </div>
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <span id="btnText">Reveal Cashback</span>
+                    </button>
+                </form>
             </div>
-            <canvas id="scratchCanvas"></canvas>
-        </div>
-        
         </div>
 
-    <div id="form-modal" class="modal-overlay">
+        <!-- Scratch Section -->
+        <div id="scratchSection" class="hidden">
+            <div class="instruction">Scratch to reveal your cashback</div>
+            
+            <div class="scratch-container" id="scratchContainer">
+                <div class="prize-layer" id="prizeLayer">
+                    <div class="prize-amount" id="prizeAmount">₹0</div>
+                </div>
+                <canvas id="scratchCanvas"></canvas>
+            </div>
+            <p class="terms">*Terms & Conditions Apply</p>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
         <div class="modal-content">
-            <h2 class="form-title">Validate Purchase</h2>
-            <p class="form-intro">Please submit your details to validate your purchase and claim your cashback.</p>
-
-            <form id="cashback-form" name="cashback-campaign-form" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                
-                <input type="hidden" name="form-name" value="cashback-campaign-form" />
-                <p class="hidden">
-                    <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
-                </p>
-
-                <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="mobile">Mobile Number</label>
-                    <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" title="Ten digits phone number" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="invoice-no">Invoice Number</label>
-                    <input type="text" id="invoice-no" name="invoice-no" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="amount">Invoice Amount (₹)</label>
-                    <input type="number" id="amount" name="amount" min="1" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="address">Full Address</label>
-                    <textarea id="address" name="address" rows="2" required></textarea>
-                </div>
-
-                <button type="submit" class="reset-btn form-submit-btn">Verify</button>
-            </form>
-        </div>
-    </div>
-    
-    <div id="thankyou-overlay" class="modal-overlay hidden">
-        <div class="thankyou-content">
-            <h2 class="thankyou-title">Congratulations!</h2>
-            <p class="thankyou-message">Your reward has been successfully registered.</p>
-            <p class="collect-message">Please collect the amount from Excellux by <span id="collectionDate"></span>.</p>
-            <p class="contact-info">For any queries, contact our helpline.</p>
+            <div class="modal-title">Congratulations!</div>
+            <div class="modal-message" id="modalMessage"></div>
+            <button class="modal-btn" onclick="closeModal()">Close</button>
         </div>
     </div>
 
+    <script>
+        let isScratching = false;
+        let scratchPercentage = 0;
+        let cashbackAmount = 0;
+        let hasShownModal = false;
 
-    <script src="js/cb.js"></script>
+        function calculateCashback(amount) {
+            if (amount < 1000) {
+                return 0;
+            }
+            
+            // Random percentage between 1% and 1.5%
+            const percentage = (Math.random() * 0.5 + 1) / 100;
+            const cashback = Math.round(amount * percentage);
+            
+            // Cap at 500
+            return Math.min(cashback, 500);
+        }
+
+        function getExpiryDate() {
+            const today = new Date();
+            today.setDate(today.getDate() + 5);
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return today.toLocaleDateString('en-IN', options);
+        }
+
+        document.getElementById('cashback-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const amount = parseFloat(document.getElementById('amountInput').value);
+            cashbackAmount = calculateCashback(amount);
+            
+            // Show loading
+            document.getElementById('btnText').classList.add('hidden');
+            document.getElementById('btnLoader').classList.remove('hidden');
+            document.getElementById('submitBtn').disabled = true;
+            
+            // Simulate form processing
+            setTimeout(() => {
+                // Submit form to Netlify
+                fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(new FormData(e.target)).toString()
+                }).then(() => {
+                    // Show scratch section
+                    document.getElementById('formSection').classList.add('hidden');
+                    document.getElementById('scratchSection').classList.remove('hidden');
+                    
+                    if (cashbackAmount === 0) {
+                        document.getElementById('prizeLayer').innerHTML = '<div class="sorry-text">Sorry<br>Better luck<br>next time</div>';
+                    } else {
+                        document.getElementById('prizeAmount').textContent = '₹' + cashbackAmount;
+                    }
+                    
+                    initScratchCard();
+                }).catch((error) => {
+                    alert('Error submitting form. Please try again.');
+                    document.getElementById('btnText').classList.remove('hidden');
+                    document.getElementById('btnLoader').classList.add('hidden');
+                    document.getElementById('submitBtn').disabled = false;
+                });
+            }, 800);
+        });
+
+        function initScratchCard() {
+            const canvas = document.getElementById('scratchCanvas');
+            const container = document.getElementById('scratchContainer');
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = container.offsetWidth;
+            canvas.height = container.offsetHeight;
+
+            // Create scratch layer
+            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            gradient.addColorStop(0, '#3a3a3a');
+            gradient.addColorStop(0.5, '#4a4a4a');
+            gradient.addColorStop(1, '#3a3a3a');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Add Excellux pattern
+            ctx.fillStyle = '#555';
+            ctx.font = '13px Playfair Display';
+            ctx.textAlign = 'center';
+            for(let i = 0; i < canvas.height; i += 45) {
+                for(let j = 0; j < canvas.width; j += 90) {
+                    ctx.fillText('EXCELLUX', j + 45, i + 25);
+                }
+            }
+
+            scratchPercentage = 0;
+
+            // Scratch functionality
+            const scratch = (x, y) => {
+                ctx.globalCompositeOperation = 'destination-out';
+                ctx.beginPath();
+                ctx.arc(x, y, 35, 0, 2 * Math.PI);
+                ctx.fill();
+
+                // Calculate scratch percentage
+                const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                let transparent = 0;
+                for(let i = 3; i < imageData.data.length; i += 4) {
+                    if(imageData.data[i] === 0) transparent++;
+                }
+                scratchPercentage = (transparent / (imageData.data.length / 4)) * 100;
+
+                if(scratchPercentage > 60) {
+                    canvas.style.opacity = '0';
+                    canvas.style.transition = 'opacity 0.5s';
+                    
+                    // Show congratulations modal only once and only if there's a cashback
+                    if (!hasShownModal && cashbackAmount > 0) {
+                        hasShownModal = true;
+                        setTimeout(() => {
+                            showCongratulationsModal();
+                        }, 500);
+                    }
+                }
+            };
+
+            canvas.addEventListener('mousedown', () => isScratching = true);
+            canvas.addEventListener('mouseup', () => isScratching = false);
+            canvas.addEventListener('mousemove', (e) => {
+                if(isScratching) {
+                    const rect = canvas.getBoundingClientRect();
+                    scratch(e.clientX - rect.left, e.clientY - rect.top);
+                }
+            });
+
+            canvas.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                isScratching = true;
+            });
+            canvas.addEventListener('touchend', () => isScratching = false);
+            canvas.addEventListener('touchmove', (e) => {
+                e.preventDefault();
+                if(isScratching) {
+                    const rect = canvas.getBoundingClientRect();
+                    const touch = e.touches[0];
+                    scratch(touch.clientX - rect.left, touch.clientY - rect.top);
+                }
+            });
+        }
+
+        function showCongratulationsModal() {
+            const expiryDate = getExpiryDate();
+            document.getElementById('modalMessage').innerHTML = 
+                `You have won ₹${cashbackAmount} cashback!<br><br>Please collect it from the showroom by <strong>${expiryDate}</strong>`;
+            document.getElementById('modal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+        }
+    </script>
 </body>
 </html>
