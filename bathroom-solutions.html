@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bathroom Solutions | Excellux - Design Concepts</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/products.css"> 
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo">
+			<a href="index.html">
+				<img src="Images/Excelluxlogo.png" alt="Excellux - Home Solutions Logo">
+			</a>
+		</div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="bathroom-solutions.html" class="active">Bathroom Solutions</a></li>
+                <li><a href="contact-us.html" class="cta-link">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-hero-section">
+            <div class="container">
+                <h1 class="page-title">The Art of Bathing</h1>
+                <p class="page-subtitle">Explore our signature design concepts, where luxury meets enduring minimalism.</p>
+            </div>
+        </section>
+
+        <div class="container design-grid">
+            
+            <section class="design-card concept-golden">
+                <div class="card-content">
+                    <h2 class="concept-title">The Golden Tribute</h2>
+                    <p class="concept-description">A bold, yet subtle embrace of brushed brass and muted gold accents. This concept pairs warm metallic finishes with pristine stone to evoke classic opulence within a modern framework.</p>
+                    <a href="https://drive.google.com/file/d/1mZLTqmoXJIvIw4YMtQ_VnvMbttCkLOqq/view?usp=sharing" target="_blank" class="cta-button">View Catalogue</a>
+                </div>
+            </section>
+
+            <section class="design-card concept-mono">
+                <div class="card-content">
+                    <h2 class="concept-title">The Monochromatic Calm</h2>
+                    <p class="concept-description">An exploration of depth through matte black fixtures, dark wood grain, and charcoal tiles. A sleek, sophisticated design that defines modern minimalism and urban luxury.</p>
+                    <a href="https://drive.google.com/file/d/1mZLTqmoXJIvIw4YMtQ_VnvMbttCkLOqq/view?usp=sharing" target="_blank" class="cta-button">View Catalogue</a>
+                </div>
+            </section>
+
+            <section class="design-card concept-shower">
+                <div class="card-content">
+                    <h2 class="concept-title">A Relaxing Affair</h2>
+                    <p class="concept-description">Engineered for total rejuvenation. Featuring multi-function shower systems, rainfall heads, and integrated steam options, this concept turns daily cleansing into a spa-like retreat.</p>
+                    <a href="https://drive.google.com/file/d/1mZLTqmoXJIvIw4YMtQ_VnvMbttCkLOqq/view?usp=sharing" target="_blank" class="cta-button">View Catalogue</a>
+                </div>
+            </section>
+
+            <section class="design-card concept-stone">
+                <div class="card-content">
+                    <h2 class="concept-title">The Sculpted Stone</h2>
+                    <p class="concept-description">Inspired by nature and form. This concept features smooth, freestanding soaking tubs and solid stone vessel sinks, emphasizing sculptural elements and tactile, natural materials.</p>
+                    <a href="https://drive.google.com/file/d/1mZLTqmoXJIvIw4YMtQ_VnvMbttCkLOqq/view?usp=sharing" target="_blank" class="cta-button">View Catalogue</a>
+                </div>
+            </section>
+
+        </div> </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; <span id="current-year-products"></span> Excellux Solutions Private Limited | All Rights Reserved.</p>
+            <div class="footer-links">
+                <a href="contact-us.html">Privacy Policy</a>
+                <a href="contact-us.html">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('current-year-products').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

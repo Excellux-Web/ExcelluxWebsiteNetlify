@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Excellux - Request a Consultation</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo">
+			<a href="index.html">
+				<img src="Images/Excelluxlogo.png" alt="Excellux - Home Solutions Logo">
+			</a>
+		</div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="bathroom-solutions.html">Bathroom Solutions</a></li>
+                <li><a href="contact-us.html" class="cta-link active">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contact-hero-section">
+            <div class="container contact-grid">
+                
+                <div class="contact-details">
+                    <h2 class="section-title">Get In Touch</h2>
+                    <p class="intro-text">We're ready to discuss your next project. Reach out to schedule a private consultation or to request our full catalogue.</p>
+                    
+                    <div class="info-block">
+                        <h3>Display Center</h3>
+                        <p>House No. 06 Agroha Nagar</p>
+                        <p>AB Road, Dewas 455001</p>
+                    </div>
+
+                    <div class="info-block">
+                        <h3>Contact</h3>
+                        <p>Phone: <a href="tel:+15551234567">+91 7803093139</a></p>
+                        <p>Email: <a href="mailto:info.excelluxindia@gmail.com">info.excelluxindia@gmail.com</a></p>
+                    </div>
+
+                    <div class="info-block">
+                        <h3>Opening Hours</h3>
+                        <p>Mon - Sat: 10:00 AM - 9:00 PM</p>
+                        <p>Sunday: By Appointment Only</p>
+                    </div>
+                </div>
+
+                <div class="form-container">
+                    <h2 class="form-title">Request a Callback</h2>
+                    <form name="lead-collection" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                        
+                        <p class="hidden">
+                            <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+                        </p>
+                        
+                        <input type="hidden" name="form-name" value="lead-collection" />
+
+                        <div class="form-group-flex">
+                            <div class="form-group">
+                                <label for="first-name">First Name</label>
+                                <input type="text" id="first-name" name="first-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="last-name">Last Name</label>
+                                <input type="text" id="last-name" name="last-name">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address (Optional)</label>
+                            <input type="email" id="email" name="email">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="interest">Interested In</label>
+                            <select id="interest" name="interest" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="Faucets">Faucets</option>
+                                <option value="Sanitaryware">Sanitaryware</option>
+                                <option value="Accessories">Accessories</option>
+                                <option value="Complete Bathroom Solutions">Complete Bathroom Solutions</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Your Project Details</label>
+                            <textarea id="message" name="message" rows="4"></textarea>
+                        </div>
+
+                        <button type="submit" class="cta-button form-submit-btn">Send Inquiry</button>
+                    </form>
+                </div> </div> </section>
+
+        <section class="map-section">
+            <div class="map-placeholder">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3673.68785873224!2d76.04356727386367!3d22.961720018599138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396317e258b2c88d%3A0xfe44b0d692638614!2sExcellux%20Solutions%20Private%20Limited!5e0!3m2!1sen!2sin!4v1759398558276!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; <span id="current-year-contact"></span> Excellux Solutions Private Limited | All Rights Reserved.</p>
+            <div class="footer-links">
+                <a href="contact-us.html">Privacy Policy</a>
+                <a href="contact-us.html">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('current-year-contact').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

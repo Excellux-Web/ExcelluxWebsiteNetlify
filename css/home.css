@@ -1,0 +1,218 @@
+/* ========================================= */
+/* home.css - Styles for the Homepage        */
+/* ========================================= */
+
+/* --- 1. HERO SECTION STYLING --- */
+.hero-section {
+    /* Use a high-quality background image for luxury feel */
+    background: url('../images/hero-bath-bg.jpg') center center no-repeat;
+    background-size: cover;
+    height: 90vh; /* Make it nearly full-screen for maximum impact */
+    display: flex;
+    align-items: center; /* Center content vertically */
+    justify-content: flex-start; /* Align content to the left */
+    position: relative;
+    padding-left: 5%; /* Space from the edge */
+}
+
+/* Optional: Add a subtle dark overlay for better text readability */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.1); /* Very slight dark overlay */
+}
+
+.hero-content {
+    color: var(--color-text-light); /* Light text on dark/image background */
+    z-index: 10; /* Ensure content is above the overlay */
+    max-width: 600px;
+}
+
+.hero-title {
+    font-size: 4rem; /* Large, impactful Serif font */
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem; /* Readable Sans-serif subtitle */
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.hero-content .cta-button {
+    background-color: var(--color-accent-gold); /* Accent button for primary CTA */
+    border-color: var(--color-accent-gold);
+    color: var(--color-text-dark);
+}
+
+.hero-content .cta-button:hover {
+    background-color: transparent;
+    border-color: var(--color-accent-gold);
+    color: var(--color-accent-gold);
+}
+
+
+/* --- 2. ABOUT US SECTION STYLING --- */
+.about-us-section {
+    padding: 80px 0;
+    text-align: center;
+    background-color: var(--color-background);
+}
+
+.about-us-section .container {
+    max-width: 800px; /* Narrower container for focused reading */
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--color-accent-gold); /* Draw attention with the accent color */
+    font-weight: 400;
+}
+
+.section-text {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--color-text-dark);
+}
+
+
+/* --- 3. PRODUCTS SHOWCASE SECTION STYLING --- */
+.products-showcase-section {
+    padding: 80px 0 100px;
+    background-color: var(--color-text-light); /* Light background to separate from the hero */
+}
+
+.products-showcase-section .section-title {
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--color-text-dark);
+}
+
+.product-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three cards per row */
+    gap: 40px;
+}
+
+.product-card {
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05); /* Subtle lift effect */
+}
+
+.card-image {
+    width: 100%;
+    padding-bottom: 100%;
+    background-color: var(--color-border-light); /* Placeholder background */
+    margin-bottom: 20px;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Placeholder styles for different product images - REMOVE when actual images are used */
+.vanity-img {
+    /* Replace with your image path */
+    background-image: url('../images/solution1.jpg'); 
+}
+.shower-img {
+    /* Replace with your image path */
+    background-image: url('../images/solution2.jpg');
+}
+.tub-img {
+    /* Replace with your image path */
+    background-image: url('../images/solution3.jpg');
+}
+/* END Placeholder styles */
+
+
+.product-card h3 {
+    font-family: var(--font-sans); /* Use Sans for card titles for a modern feel */
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-size: 1.25rem;
+}
+
+.product-card p {
+    color: #666;
+}
+
+.view-all-link {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.text-link {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
+/* --- 4. MEDIA QUERIES (Responsiveness) --- */
+
+/* Tablet view (up to 1024px) */
+@media (max-width: 1024px) {
+    .product-cards-grid {
+        grid-template-columns: repeat(2, 1fr); /* Two cards per row */
+    }
+}
+
+/* Mobile view (up to 768px) */
+@media (max-width: 768px) {
+    .main-header {
+        padding: 20px;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .product-cards-grid {
+        grid-template-columns: 1fr; /* Stack cards vertically */
+    }
+}
+
+/* Smaller mobile view (up to 480px) */
+@media (max-width: 480px) {
+    .main-nav ul {
+        gap: 15px;
+    }
+
+    .hero-section {
+        height: 70vh;
+        padding: 0 5%;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .main-footer .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .main-footer .footer-links {
+        margin-top: 10px;
+    }
+    
+    .main-footer .footer-links a {
+        margin: 0 10px;
+    }
+}

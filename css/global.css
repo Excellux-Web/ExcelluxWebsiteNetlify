@@ -1,0 +1,184 @@
+/* ========================================= */
+/* 1. CSS RESET & Global Variables           */
+/* ========================================= */
+
+/* Define Color and Font Variables */
+:root {
+    /* Colors: Premium, Modern, Minimalist */
+    --color-text-dark: #1A1A1A;     /* Deep Charcoal Black */
+    --color-text-light: #F9F9F9;    /* Very Light Off-White */
+    --color-background: #FFFFFF;    /* Clean White */
+    --color-accent-gold: #B8860B;   /* Muted Gold/Bronze */
+    --color-border-light: #E0E0E0;  /* Light Gray for dividers */
+    --color-button-bg: #1A1A1A;
+    --color-button-text: #FFFFFF;
+
+    /* Fonts: Serif & Sans */
+    --font-serif: 'Playfair Display', serif; /* For Headings, Titles, Taglines */
+    --font-sans: 'Montserrat', sans-serif;        /* For Body Text, Navigation */
+}
+
+/* Simple CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-sans);
+    color: var(--color-text-dark);
+    background-color: var(--color-background);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+
+/* ========================================= */
+/* 2. Typography Styles (Serif & Sans)       */
+/* ========================================= */
+
+/* General Headings (using Serif) */
+h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    font-weight: 500; /* Medium weight for a modern look */
+    line-height: 1.2;
+}
+
+/* Body and Links (using Sans) */
+p, a, li, button {
+    font-family: var(--font-sans);
+}
+
+/* Link Base Styling */
+a {
+    color: var(--color-text-dark);
+    text-decoration: none;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-accent-gold);
+}
+
+
+/* ========================================= */
+/* 3. Reusable Components (Buttons, Containers) */
+/* ========================================= */
+
+/* Standard Page Container for content width */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Call To Action Button Styling (Sleek Modern Minimalism) */
+.cta-button {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: var(--color-button-bg);
+    color: var(--color-button-text);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    border: 2px solid var(--color-button-bg);
+    border-radius: 0; /* Sharp corners for modern feel */
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: transparent;
+    color: var(--color-text-dark);
+    border-color: var(--color-text-dark);
+}
+
+
+/* ========================================= */
+/* 4. Universal Layout (Header & Footer)     */
+/* ========================================= */
+
+/* --- HEADER --- */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 25px;
+    border-bottom: 1px solid var(--color-border-light);
+    background-color: var(--color-background);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo img {
+    /* Style for your actual image logo */
+    max-height: 50px; /* Adjust size as needed for your logo */
+    width: auto;
+    display: block;
+}
+
+.logo h1 {
+    /* Style for text logo if used */
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.main-nav a {
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent; /* Prepare for active/hover state */
+}
+
+/* Active/Hover states for navigation */
+.main-nav a:hover,
+.main-nav a.active {
+    color: var(--color-accent-gold);
+    border-bottom-color: var(--color-accent-gold);
+}
+
+/* CTA Link in Navigation (Contact Us) */
+.main-nav .cta-link {
+    color: var(--color-accent-gold);
+    border-bottom-color: var(--color-accent-gold);
+}
+
+
+/* --- FOOTER --- */
+.main-footer {
+    background-color: var(--color-text-dark);
+    color: var(--color-text-light);
+    padding: 40px 0;
+    font-size: 0.85rem;
+}
+
+.main-footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+
+.main-footer a {
+    color: var(--color-text-light);
+    margin-left: 20px;
+}
+
+.main-footer a:hover {
+    color: var(--color-accent-gold);
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Excellux - Home Solutions</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo">
+			<a href="index.html">
+				<img src="Images/Excelluxlogo.png" alt="Excellux - Home Solutions Logo">
+			</a>
+		</div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="bathroom-solutions.html">Bathroom Solutions</a></li>
+                <li><a href="contact-us.html" class="cta-link">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">Crafting Timeless Spaces.</h1>
+                <p class="hero-subtitle">Minimalist designs, engineered for<br>luxury and lasting value.</p>
+                <a href="bathroom-solutions.html" class="cta-button">Explore Our Collection</a>
+            </div>
+        </section>
+
+        <section class="about-us-section">
+            <div class="container">
+                <h2 class="section-title">A Vision of Elegance</h2>
+                <p class="section-text">
+                    We believe true luxury lies in simplicity and impeccable craftsmanship. Our solutions are designed to transform your bathroom into a modern sanctuary—sleek, highly functional, and built to stand the test of time. We focus on quality materials and minimalist lines to maximize your space and elevate your daily routine.
+                </p>
+            </div>
+        </section>
+
+        <section class="products-showcase-section">
+            <div class="container">
+                <h2 class="section-title">Featured Bathroom Solutions</h2>
+                <div class="product-cards-grid">
+                    <article class="product-card">
+                        <div class="card-image vanity-img"></div>
+                        <h3>Pocket Spa</h3>
+                        <p>Big Style in small spaces without the clutter.</p>
+                    </article>
+
+                    <article class="product-card">
+                         <div class="card-image shower-img"></div>
+                        <h3>Rain & Reign</h3>
+                        <p>Immerse yourself in showers fit for royalty daily.</p>
+                    </article>
+
+                    <article class="product-card">
+                         <div class="card-image tub-img"></div>
+                        <h3>Gilded Retreat</h3>
+                        <p>Indulge in shimmering elegance every time.</p>
+                    </article>
+                </div>
+                <div class="view-all-link">
+                    <a href="bathroom-solutions.html" class="text-link">View All Categories &rarr;</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; <span id="current-year"></span> Excellux Solutions Private Limited | All Rights Reserved.</p>
+            <div class="footer-links">
+                <a href="contact-us.html">Privacy Policy</a>
+                <a href="contact-us.html">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

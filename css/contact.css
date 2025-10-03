@@ -1,0 +1,200 @@
+/* ========================================= */
+/* contact.css - Styles for the Contact Us Page */
+/* ========================================= */
+
+/* --- 1. CONTACT HERO/GRID SECTION --- */
+
+.contact-hero-section {
+    /* Placeholder for the background image that the translucent form sits on */
+    background: url('../images/contact-bg-marble.jpg') center center no-repeat; 
+    background-size: cover;
+    padding: 80px 0;
+    position: relative;
+}
+
+/* Optional: Dark overlay to enhance contrast for the form/text */
+.contact-hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.2); 
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; /* Details on the left (1fr), Form on the right (1.2fr) */
+    gap: 60px;
+    position: relative;
+    z-index: 2; /* Ensure grid content is above the overlay */
+}
+
+/* --- Contact Details Side (Left) --- */
+
+.contact-details {
+    color: var(--color-text-light);
+    padding-top: 20px;
+}
+
+.contact-details .section-title {
+    font-size: 3rem;
+    color: var(--color-accent-gold); 
+    margin-bottom: 20px;
+}
+
+.intro-text {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.info-block {
+    margin-bottom: 30px;
+}
+
+.info-block h3 {
+    font-family: var(--font-sans); 
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.info-block p {
+    font-weight: 300;
+}
+
+.info-block a {
+    color: var(--color-text-light);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.info-block a:hover {
+    color: var(--color-accent-gold);
+}
+
+/* --- 2. TRANSLUCENT FORM STYLING (Right) --- */
+
+.form-container {
+    background-color: rgba(255, 255, 255, 0.9); /* Key: White background with 90% opacity */
+    backdrop-filter: blur(5px); /* Optional: Adds a slight blur effect for modern look */
+    padding: 40px;
+    border-radius: 2px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--color-text-dark);
+}
+
+.form-group-flex {
+    display: flex;
+    gap: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #444;
+}
+
+/* Input and Select Styling (Sleek, Minimalist) */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid var(--color-border-light);
+    border-radius: 0;
+    background-color: var(--color-background);
+    color: var(--color-text-dark);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--color-accent-gold); /* Highlight focus with accent color */
+    outline: none;
+    box-shadow: 0 0 0 1px var(--color-accent-gold);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+/* Style the submit button to match global CTA */
+.form-submit-btn {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Netlify honeypot visibility control */
+.hidden {
+    display: none;
+}
+
+
+/* --- 3. MAP SECTION --- */
+
+.map-section {
+    padding: 0;
+    overflow: hidden;
+    height: 400px; /* Define map height */
+}
+
+.map-placeholder,
+.map-placeholder iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
+
+/* --- 4. MEDIA QUERIES (Responsiveness) --- */
+
+@media (max-width: 900px) {
+    .contact-grid {
+        grid-template-columns: 1fr; /* Stack items vertically */
+        gap: 40px;
+        padding: 0 20px;
+    }
+
+    .contact-details {
+        text-align: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .form-group-flex {
+        flex-direction: column; /* Stack first name/last name fields */
+        gap: 0;
+    }
+
+    .form-container {
+        padding: 30px;
+    }
+
+    .map-section {
+        height: 300px;
+    }
+}

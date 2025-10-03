@@ -1,0 +1,158 @@
+/* ========================================= */
+/* products.css - Styles for Bathroom Solutions Page */
+/* ========================================= */
+
+/* --- 1. PAGE HERO STYLING --- */
+
+.page-hero-section {
+    padding: 100px 0 60px;
+    text-align: center;
+    background-color: var(--color-text-light); /* Off-white background */
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+.page-title {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: var(--color-text-dark);
+}
+
+.page-subtitle {
+    font-size: 1.25rem;
+    color: #666;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+
+/* --- 2. DESIGN CONCEPTS GRID STYLING --- */
+
+.design-grid {
+    padding: 60px 0;
+    /* Use a fluid grid that spans two columns on large screens */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 40px;
+}
+
+.design-card {
+    position: relative;
+    height: 500px; /* Fixed height for visual consistency and impact */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end; /* Align content to the bottom */
+    padding: 30px;
+    transition: all 0.5s ease;
+    overflow: hidden;
+}
+
+/* Overlay for Readability and Premium Look */
+.design-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
+    transition: background 0.5s ease;
+}
+
+/* Hover Effect: Darker overlay and slight scale */
+.design-card:hover::before {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.design-card:hover {
+    transform: scale(1.01);
+}
+
+.card-content {
+    position: relative;
+    z-index: 5; /* Ensure content is above the overlay */
+    color: var(--color-text-light);
+}
+
+.concept-title {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+    font-family: var(--font-serif);
+}
+
+.concept-description {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    max-width: 90%;
+}
+
+.design-card .cta-button {
+    /* Style the button to contrast with the dark card background */
+    background-color: var(--color-text-light);
+    color: var(--color-text-dark);
+    border-color: var(--color-text-light);
+    font-size: 0.8rem;
+    padding: 8px 20px;
+}
+
+.design-card .cta-button:hover {
+    background-color: var(--color-accent-gold);
+    border-color: var(--color-accent-gold);
+    color: var(--color-text-light);
+}
+
+
+/* --- 3. BACKGROUND PLACEHOLDERS (Replace with actual images) --- */
+
+.concept-golden {
+    /* Placeholder for "The Golden Tribute" */
+    background-image: url('../images/concept1.jpg');
+}
+
+.concept-mono {
+    /* Placeholder for "The Monochromatic Calm" */
+    background-image: url('../images/concept2.png');
+}
+
+.concept-shower {
+    /* Placeholder for "A Relaxing Affair" */
+    background-image: url('../images/concept3.png');
+}
+
+.concept-stone {
+    /* Placeholder for "The Sculpted Stone" */
+    background-image: url('../images/concept4.png');
+}
+
+
+/* --- 4. MEDIA QUERIES (Responsiveness) --- */
+
+/* Tablet and smaller screens */
+@media (max-width: 1080px) {
+    .design-grid {
+        /* Allow grid items to stack when they can't maintain 500px width */
+        grid-template-columns: 1fr; 
+        padding: 40px 20px;
+    }
+}
+
+/* Mobile screens */
+@media (max-width: 600px) {
+    .design-card {
+        height: 400px; /* Slightly shorter on mobile */
+        padding: 20px;
+    }
+    
+    .page-title {
+        font-size: 2.5rem;
+    }
+
+    .concept-title {
+        font-size: 1.6rem;
+    }
+
+    .concept-description {
+        font-size: 0.95rem;
+    }
+}
