@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title id="seo-title-placeholder">Loading Post | Excellux Blog</title>
+    <meta name="description" content="Read the latest insights from Excellux on minimalist luxury bathroom design.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/blog.css">
+</head>
+<body>
+    
+    <header class="main-header">
+    <div class="logo">
+			<a href="index.html">
+				<img src="Images/Excelluxlogo.png" alt="Excellux - Home Solutions Logo">
+			</a>
+		</div>
+    
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="bathroom-solutions.html">Bathroom Solutions</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact-us.html" class="cta-link">Contact Us</a></li>
+        </ul>
+    </nav>
+    
+    <div class="hamburger-menu" id="hamburger-toggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+</header>
+
+<nav class="mobile-nav-overlay" id="mobile-menu">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="bathroom-solutions.html">Solutions</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact-us.html">Contact Us</a></li>
+    </ul>
+</nav>
+
+    <main>
+        <section class="post-content-section">
+            <div class="container">
+                <article class="post-article" id="post-article-content">
+                    
+                    <h1 class="post-title-main" id="post-title">Loading Article...</h1>
+                    
+                    <div class="post-meta">
+                        <span id="post-date">Published on: [Date]</span>
+                    </div>
+
+                    <div class="post-featured-image" id="post-image-container">
+                        </div>
+
+                    <div class="markdown-body" id="post-body-content">
+                        <p style="text-align: center; color: #999;">Fetching content from CMS. Please wait...</p>
+                    </div>
+
+                </article>
+                
+                <div style="text-align: center; padding-top: 50px;">
+                    <a href="blog.html" class="cta-button" style="padding: 10px 30px;">&larr; Back to Blog</a>
+                </div>
+
+            </div>
+        </section>
+		<section class="conversion-cta-section">
+            <div class="container" style="text-align: center; padding: 40px 0;">
+                <h2 style="font-family: var(--font-serif); color: var(--color-text-dark); margin-bottom: 20px;">Ready to Design Your Sanctuary?</h2>
+                <p style="font-size: 1.1rem; color: #444; margin-bottom: 30px;">Speak with an Excellux specialist to begin planning your minimalist luxury bath solution.</p>
+                <a href="contact-us.html" class="cta-button">Request a Private Consultation</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; <span id="current-year-post"></span> Excellux Solutions Private Limited | All Rights Reserved.</p>
+            <div class="footer-links">
+                <a href="contact-us.html">Privacy Policy</a>
+                <a href="contact-us.html">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.getElementById('current-year-post').textContent = new Date().getFullYear();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@4.0.0/marked.min.js"></script>
+	<script src="js/blog.js"></script>
+	<script src="js/global-scripts.js"></script>
+</body>
+</html>

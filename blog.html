@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Excellux - Home Solutions</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/blog.css">
+</head>
+<body>
+    
+    <header class="main-header">
+    <div class="logo">
+			<a href="index.html">
+				<img src="Images/Excelluxlogo.png" alt="Excellux - Home Solutions Logo">
+			</a>
+		</div>
+    
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="bathroom-solutions.html">Bathroom Solutions</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact-us.html" class="cta-link">Contact Us</a></li>
+        </ul>
+    </nav>
+    
+    <div class="hamburger-menu" id="hamburger-toggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+</header>
+
+<nav class="mobile-nav-overlay" id="mobile-menu">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="bathroom-solutions.html">Solutions</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact-us.html">Contact Us</a></li>
+    </ul>
+</nav>
+
+    <main>
+        <section class="blog-header">
+            <div class="container">
+                <h1>Insights on Luxury Design</h1>
+                <p>Curated articles, expert tips, and inspiration for crafting your timeless, minimalist sanctuary.</p>
+            </div>
+        </section>
+
+        <section class="post-list-section">
+            <div class="container">
+                <div class="post-grid" id="posts-container">
+                    
+                    <article class="post-card placeholder-card">
+                        <div class="post-card-image" style="background-color: #f0f0f0;"></div>
+                        <div class="post-card-content">
+                            <div class="post-card-date">Loading...</div>
+                            <h2>Initializing Blog Content</h2>
+                            <p>Content will appear here after the initial successful commit to Netlify and after publishing your first post via the /admin panel.</p>
+                            <a href="#" class="read-more">Read Article &rarr;</a>
+                        </div>
+                    </article>
+
+                </div>
+                
+                <p id="loading-message" style="text-align: center; margin-top: 50px;">Fetching latest articles...</p>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; <span id="current-year-blog"></span> Excellux Solutions Private Limited | All Rights Reserved.</p>
+            <div class="footer-links">
+                <a href="contact-us.html">Privacy Policy</a>
+                <a href="contact-us.html">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.getElementById('current-year-blog').textContent = new Date().getFullYear();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@4.0.0/marked.min.js"></script>
+	<script src="js/blog.js"></script>
+	<script src="js/global-scripts.js"></script>
+</body>
+</html>

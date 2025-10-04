@@ -14,19 +14,36 @@
 </head>
 <body>
     <header class="main-header">
-        <div class="logo">
+    <div class="logo">
 			<a href="index.html">
 				<img src="Images/Excelluxlogo.png" alt="Excellux - Home Solutions Logo">
 			</a>
 		</div>
-        <nav class="main-nav">
-            <ul>
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="bathroom-solutions.html">Bathroom Solutions</a></li>
-                <li><a href="contact-us.html" class="cta-link">Contact Us</a></li>
-            </ul>
-        </nav>
-    </header>
+    
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="bathroom-solutions.html">Bathroom Solutions</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact-us.html" class="cta-link">Contact Us</a></li>
+        </ul>
+    </nav>
+    
+    <div class="hamburger-menu" id="hamburger-toggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+</header>
+
+<nav class="mobile-nav-overlay" id="mobile-menu">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="bathroom-solutions.html">Solutions</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact-us.html">Contact Us</a></li>
+    </ul>
+</nav>
 
     <main>
         <section class="hero-section">
@@ -88,5 +105,6 @@
     <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
+	<script src="js/global-scripts.js"></script>
 </body>
 </html>

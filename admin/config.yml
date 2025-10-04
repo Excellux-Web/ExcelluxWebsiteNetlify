@@ -1,0 +1,39 @@
+# =======================================================
+# CMS Configuration for Excellux Blog (Decap CMS)
+# =======================================================
+
+backend:
+  name: git-gateway
+  branch: master # Must match your GitHub branch (master or main)
+
+# Publish mode: Allows editorial workflow (drafts)
+publish_mode: editorial_workflow
+
+# Authentication setup
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "blog" # Used internally by the CMS
+    label: "Blog Posts" # Name shown in the CMS sidebar
+    folder: "_posts" # Folder where markdown files are saved
+    create: true # Allow users to create new posts
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename format
+    
+    fields:
+      # --- BASIC POST FIELDS ---
+      - {label: "Title", name: "title", widget: "string", required: true}
+      - {label: "Publish Date", name: "date", widget: "datetime", default: "now", format: "YYYY-MM-DDTHH:mm:ssZ"}
+      - {label: "Featured Image", name: "image", widget: "image", required: false}
+      - {label: "Summary/Excerpt", name: "excerpt", widget: "text", required: true, hint: "A short, engaging summary for the blog listing page."}
+      
+      # --- SEO FIELDS (Critical for organic traffic) ---
+      - label: "SEO Settings"
+        name: "seo"
+        widget: "object"
+        fields:
+          - {label: "SEO Title (50-60 chars)", name: "seo_title", widget: "string", required: true, hint: "Optimized title for search engines. Should include keywords."}
+          - {label: "Meta Description (150-160 chars)", name: "seo_description", widget: "string", required: true, hint: "The description snippet Google shows under your title."}
+
+      # --- MAIN CONTENT ---
+      - {label: "Body Content", name: "body", widget: "markdown", required: true}

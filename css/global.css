@@ -38,6 +38,11 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+/* Class to disable scrolling when mobile menu is open */
+body.no-scroll {
+    overflow: hidden;
+}
+
 
 /* ========================================= */
 /* 2. Typography Styles (Serif & Sans)       */
@@ -46,7 +51,7 @@ body {
 /* General Headings (using Serif) */
 h1, h2, h3, h4 {
     font-family: var(--font-serif);
-    font-weight: 500; /* Medium weight for a modern look */
+    font-weight: 500;
     line-height: 1.2;
 }
 
@@ -89,7 +94,7 @@ a:hover {
     font-weight: 700;
     letter-spacing: 1.5px;
     border: 2px solid var(--color-button-bg);
-    border-radius: 0; /* Sharp corners for modern feel */
+    border-radius: 0; 
     transition: all 0.3s ease;
 }
 
@@ -102,6 +107,7 @@ a:hover {
 
 /* ========================================= */
 /* 4. Universal Layout (Header & Footer)     */
+/* -- Complete with Hamburger Menu Logic --  */
 /* ========================================= */
 
 /* --- HEADER --- */
@@ -109,7 +115,7 @@ a:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 25px;
+    padding: 20px 40px;
     border-bottom: 1px solid var(--color-border-light);
     background-color: var(--color-background);
     position: sticky;
@@ -118,21 +124,21 @@ a:hover {
 }
 
 .logo img {
-    /* Style for your actual image logo */
-    max-height: 50px; /* Adjust size as needed for your logo */
+    max-height: 50px;
     width: auto;
     display: block;
 }
 
 .logo h1 {
-    /* Style for text logo if used */
     font-size: 1.6rem;
     letter-spacing: 1px;
+    font-family: var(--font-serif);
 }
 
+/* --- DESKTOP NAVIGATION STYLING --- */
 .main-nav ul {
     list-style: none;
-    display: flex;
+    display: flex; 
     gap: 30px;
 }
 
@@ -142,7 +148,8 @@ a:hover {
     font-size: 0.9rem;
     letter-spacing: 0.5px;
     padding-bottom: 5px;
-    border-bottom: 2px solid transparent; /* Prepare for active/hover state */
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
 }
 
 /* Active/Hover states for navigation */
@@ -158,6 +165,80 @@ a:hover {
     border-bottom-color: var(--color-accent-gold);
 }
 
+/* --- HAMBURGER ICON STYLING (Hidden on Desktop) --- */
+.hamburger-menu {
+    display: none; /* Hidden by default on large screens */
+    cursor: pointer;
+    z-index: 1001; 
+    padding: 5px;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--color-text-dark);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Active State for Hamburger (X Icon) */
+.hamburger-menu.active .bar:nth-child(2) {
+    opacity: 0;
+}
+.hamburger-menu.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+.hamburger-menu.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+
+/* --- MOBILE MENU OVERLAY STYLING (Hidden by Default) --- */
+.mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-background);
+    /* Start off-screen */
+    transform: translateX(100%);
+    transition: transform 0.4s ease-in-out;
+    z-index: 999;
+    padding-top: 100px;
+    overflow-y: auto;
+}
+
+.mobile-nav-overlay.open {
+    transform: translateX(0); /* Slide in */
+}
+
+.mobile-nav-overlay ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.mobile-nav-overlay li {
+    padding: 15px 0;
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+.mobile-nav-overlay a {
+    font-family: var(--font-serif); /* Use Serif for dramatic mobile menu links */
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--color-text-dark);
+    display: block;
+    padding: 10px;
+}
+
+.mobile-nav-overlay a:hover,
+.mobile-nav-overlay a.active {
+    color: var(--color-accent-gold);
+}
 
 /* --- FOOTER --- */
 .main-footer {
@@ -171,7 +252,7 @@ a:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; /* Allow wrapping on small screens */
+    flex-wrap: wrap; 
 }
 
 .main-footer a {
@@ -181,4 +262,34 @@ a:hover {
 
 .main-footer a:hover {
     color: var(--color-accent-gold);
+}
+
+
+/* ========================================= */
+/* --- MEDIA QUERY for Mobile Layout ---     */
+/* ========================================= */
+
+@media (max-width: 768px) {
+    /* Hide desktop navigation and show hamburger */
+    .main-nav {
+        display: none; 
+    }
+    .hamburger-menu {
+        display: block; /* Show hamburger icon */
+    }
+    .main-header {
+        padding: 20px;
+    }
+
+    /* Stack footer items on mobile */
+    .main-footer .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .main-footer .footer-links {
+        margin-top: 15px;
+    }
+    .main-footer .footer-links a {
+        margin: 0 10px;
+    }
 }
