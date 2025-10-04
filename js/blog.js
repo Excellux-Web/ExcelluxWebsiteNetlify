@@ -103,6 +103,7 @@ const renderPost = async (slug) => {
 
 
 // 1.2. Logic for rendering the list of all posts (Used on blog.html)
+// 1.2. Logic for rendering the list of all posts (Used on blog.html)
 const renderPostList = async () => {
     const container = document.getElementById('posts-container');
     const loadingMessage = document.getElementById('loading-message');
@@ -110,61 +111,49 @@ const renderPostList = async () => {
     // Hide the placeholder card
     const placeholder = container.querySelector('.placeholder-card');
     if (placeholder) placeholder.style.display = 'none';
+    
+    container.innerHTML = ''; // Clear any existing content
 
     try {
-        // Fetch the list of files in the _posts folder from GitHub (via Netlify's CDN)
-        // Note: This relies on the convention that Netlify serves content correctly.
-        // A more robust solution might require a lambda function, but this simple approach usually works for initial setup.
+        // Fetch the automatically generated index file
+        const response = await fetch(`${getRepoRoot()}/posts.json`);
         
-        // **IMPORTANT:** Since a direct directory listing is hard/insecure on a CDN, 
-        // we must manually list a few files for the local test. 
-        // For the live Netlify site, a separate small script is typically needed 
-        // (like a simple build step generating a JSON index), but for local testing, 
-        // we mock the list retrieval by reading the files directly.
-        
-        // *** For Initial Local Testing:***
-        // Once you publish a post via /admin/, Netlify's asset optimization 
-        // often makes the filenames accessible, but you must know the exact slug.
-        
-        // We will initially try to fetch the content of ONE file to verify it works.
-        // For the full list, Netlify often requires a 'list' of content that is generated 
-        // during the build step. For now, we simulate the display with a sample post structure:
+        if (!response.ok) {
+             throw new Error('Could not fetch posts index. Check build script.');
+        }
 
-        const samplePostSlug = "2024-01-01-sample-post"; // Placeholder slug
+        const posts = await response.json();
 
-        // To keep it simple for now, we'll only display a generated structure 
-        // until we push and rely on the CMS to generate the first file.
-        
-        // --- TEMPORARY LISTING MOCK-UP (Replace with real loop once deployed) ---
-        container.innerHTML = `
-            <article class="post-card">
-                <div class="post-card-image" style="background-image: url('https://via.placeholder.com/600x338/1A1A1A/FFFFFF?text=Featured+Image+Soon');"></div>
-                <div class="post-card-content">
-                    <div class="post-card-date">January 1, 2024</div>
-                    <h2>Your First Blog Post Title Here</h2>
-                    <p>This post summary will appear here once you publish your first article through the /admin panel and Netlify builds the site.</p>
-                    <a href="post-template.html?slug=${samplePostSlug}" class="read-more">Read Article &rarr;</a>
-                </div>
-            </article>
-            <article class="post-card">
-                <div class="post-card-image" style="background-image: url('https://via.placeholder.com/600x338/1A1A1A/FFFFFF?text=Featured+Image+Soon');"></div>
-                <div class="post-card-content">
-                    <div class="post-card-date">February 15, 2024</div>
-                    <h2>The Power of Negative Space in Bath Design</h2>
-                    <p>A second article placeholder.</p>
-                    <a href="post-template.html?slug=2024-02-15-second-post" class="read-more">Read Article &rarr;</a>
-                </div>
-            </article>
-        `;
-        // --- END MOCK-UP ---
+        if (posts.length === 0) {
+            container.innerHTML = `<p style="text-align: center;">No blog posts published yet. Visit /admin to create one!</p>`;
+            return;
+        }
+
+        // Loop through the indexed posts and render the cards
+        posts.forEach(post => {
+            const imageUrl = post.image ? `${getRepoRoot()}${post.image}` : `https://via.placeholder.com/600x338/1A1A1A/FFFFFF?text=Excellux+Blog`;
+            
+            const postCardHTML = `
+                <article class="post-card">
+                    <div class="post-card-image" style="background-image: url('${imageUrl}');"></div>
+                    <div class="post-card-content">
+                        <div class="post-card-date">${formatDate(post.date)}</div>
+                        <h2>${post.title}</h2>
+                        <p>${post.excerpt}</p>
+                        <a href="post-template.html?slug=${post.slug}" class="read-more">Read Article &rarr;</a>
+                    </div>
+                </article>
+            `;
+            container.innerHTML += postCardHTML;
+        });
 
     } catch (error) {
         console.error("Error generating post list:", error);
-        container.innerHTML = `<p style="text-align: center;">Failed to load blog list. Check console for errors.</p>`;
+        container.innerHTML = `<p style="text-align: center;">Failed to load blog list. Error: ${error.message}</p>`;
     } finally {
         if (loadingMessage) loadingMessage.style.display = 'none';
     }
-}
+};
 
 
 // --- 2. INITIALIZATION ---
