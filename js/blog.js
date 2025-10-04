@@ -9,9 +9,7 @@ const POSTS_DIR = '_posts/';
 // IMPORTANT: This array must be manually updated every time you publish a new post.
 // The slug must match the Markdown file name (without the .md extension).
 // Add new slugs to the START of the array to show the newest posts first!
-const POST_SLUGS = [
-    // EXAMPLE: "2025-10-04-my-first-blog-post", 
-    // EXAMPLE: "2025-09-15-minimalist-tips",
+const POST_SLUGS = [ "2025-10-04-seamless-bathrooms-the-rise-of-tile-insert-shower-drain-channels"
 ];
 
 // --- UTILITY FUNCTIONS ---
@@ -90,7 +88,8 @@ const renderPost = async (slug) => {
     const postPath = `/${POSTS_DIR}${slug}.md`; 
 
     try {
-        const response = await fetch(postPath);
+        const cacheBustedPath = postPath + '?t=' + new Date().getTime();
+		const response = await fetch(cacheBustedPath, { cache: 'no-cache' }); 
 
         if (!response.ok) {
             setContent('post-body-content', `<p style="text-align: center;">404: Article '${slug}' not found. Please check the slug.</p>`);
@@ -159,7 +158,8 @@ const renderPostList = async () => {
         const postPath = `/${POSTS_DIR}${slug}.md`; 
         
         try {
-            const response = await fetch(postPath);
+            const cacheBustedPath = postPath + '?t=' + new Date().getTime();
+			const response = await fetch(cacheBustedPath, { cache: 'no-cache' }); 
             
             if (!response.ok) {
                 console.error(`Could not fetch post: ${slug}`);
