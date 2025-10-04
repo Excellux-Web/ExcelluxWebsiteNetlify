@@ -104,6 +104,7 @@ const renderPost = async (slug) => {
 
 // 1.2. Logic for rendering the list of all posts (Used on blog.html)
 // 1.2. Logic for rendering the list of all posts (Used on blog.html)
+// 1.2. Logic for rendering the list of all posts (Used on blog.html)
 const renderPostList = async () => {
     const container = document.getElementById('posts-container');
     const loadingMessage = document.getElementById('loading-message');
@@ -112,47 +113,67 @@ const renderPostList = async () => {
     const placeholder = container.querySelector('.placeholder-card');
     if (placeholder) placeholder.style.display = 'none';
     
-    container.innerHTML = ''; // Clear any existing content
+    // --- STEP 1: DEFINE ALL POST SLUGS MANUALLY ---
+    // IMPORTANT: As you add new posts via the CMS, you must manually 
+    // add their file names (slugs) to this array and commit this change to Git.
+    // This is the simplest way to get the list without a build tool.
+    
+    // REPLACE THIS SLUG WITH YOUR REAL POST SLUG
+    const postSlugs = [
+        "2025-10-04-seamless-bathrooms-the-rise-of-tile-insert-shower-drain-channels" // e.g., "2025-10-04-the-power-of-simplicity"
+    ];
+    // Add more slugs here: "2025-11-01-another-post-title"
 
-    try {
-        // Fetch the automatically generated index file
-        const response = await fetch(`${getRepoRoot()}/posts.json`);
-        
-        if (!response.ok) {
-             throw new Error('Could not fetch posts index. Check build script.');
-        }
+    container.innerHTML = ''; // Clear the mock-up content
 
-        const posts = await response.json();
+    // --- STEP 2: LOOP THROUGH POSTS AND FETCH METADATA ---
+    for (const slug of postSlugs) {
+        try {
+            const postPath = `${getRepoRoot()}/${POSTS_DIR}${slug}.md`;
+            const response = await fetch(postPath);
+            
+            if (!response.ok) {
+                console.error(`Could not fetch post: ${slug}`);
+                continue; // Skip this post if the file isn't found
+            }
+            
+            const markdownText = await response.text();
+            
+            // Basic parsing to get front matter (metadata)
+            const parts = markdownText.split('---');
+            const frontMatterText = parts[1];
+            
+            const metadata = {};
+            frontMatterText.split('\n').forEach(line => {
+                const match = line.match(/(\w+):\s*(.*)/);
+                if (match) {
+                    metadata[match[1]] = match[2].replace(/"/g, '').trim(); 
+                }
+            });
 
-        if (posts.length === 0) {
-            container.innerHTML = `<p style="text-align: center;">No blog posts published yet. Visit /admin to create one!</p>`;
-            return;
-        }
-
-        // Loop through the indexed posts and render the cards
-        posts.forEach(post => {
-            const imageUrl = post.image ? `${getRepoRoot()}${post.image}` : `https://via.placeholder.com/600x338/1A1A1A/FFFFFF?text=Excellux+Blog`;
+            // --- STEP 3: RENDER THE POST CARD ---
+            const imageUrl = metadata.image ? `${getRepoRoot()}${metadata.image}` : `https://via.placeholder.com/600x338/1A1A1A/FFFFFF?text=Excellux+Blog`;
             
             const postCardHTML = `
                 <article class="post-card">
                     <div class="post-card-image" style="background-image: url('${imageUrl}');"></div>
                     <div class="post-card-content">
-                        <div class="post-card-date">${formatDate(post.date)}</div>
-                        <h2>${post.title}</h2>
-                        <p>${post.excerpt}</p>
-                        <a href="post-template.html?slug=${post.slug}" class="read-more">Read Article &rarr;</a>
+                        <div class="post-card-date">${formatDate(metadata.date)}</div>
+                        <h2>${metadata.title}</h2>
+                        <p>${metadata.excerpt}</p>
+                        <a href="post-template.html?slug=${slug}" class="read-more">Read Article &rarr;</a>
                     </div>
                 </article>
             `;
+            
             container.innerHTML += postCardHTML;
-        });
 
-    } catch (error) {
-        console.error("Error generating post list:", error);
-        container.innerHTML = `<p style="text-align: center;">Failed to load blog list. Error: ${error.message}</p>`;
-    } finally {
-        if (loadingMessage) loadingMessage.style.display = 'none';
+        } catch (error) {
+            console.error(`Error processing post ${slug}:`, error);
+        }
     }
+    
+    if (loadingMessage) loadingMessage.style.display = 'none';
 };
 
 
