@@ -10,8 +10,8 @@ backend:
 publish_mode: editorial_workflow
 
 # Authentication setup
-media_folder: "images/uploads"
-public_folder: "/images/uploads"
+media_folder: "Images/uploads"
+public_folder: "/Images/uploads"
 
 collections:
   - name: "blog" # Used internally by the CMS
