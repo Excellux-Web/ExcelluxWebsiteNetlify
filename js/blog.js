@@ -9,7 +9,7 @@ const POSTS_DIR = '_posts/';
 // IMPORTANT: This array must be manually updated every time you publish a new post.
 // The slug must match the Markdown file name (without the .md extension).
 // Add new slugs to the START of the array to show the newest posts first!
-const POST_SLUGS = [ "2025-10-04-seamless-bathrooms-the-rise-of-tile-insert-shower-drain-channels"
+const POST_SLUGS = [ "2025-10-04-seamless-bathrooms-the-rise-of-tile-insert-shower-drain-channels-1"
 ];
 
 // --- UTILITY FUNCTIONS ---
