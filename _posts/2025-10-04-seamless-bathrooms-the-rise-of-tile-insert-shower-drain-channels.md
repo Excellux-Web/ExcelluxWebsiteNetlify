@@ -1,6 +1,7 @@
 ---
 title: "Seamless Bathrooms: The Rise of Tile Insert Shower Drain Channels"
 date: 2025-10-04T17:01:00+05:30
+image: /images/uploads/article-banner.jpg
 excerpt: Tile insert shower drain channels are transforming modern bathroom
   design. Blending minimalist style with superior drainage functionality, these
   sleek fixtures deliver both form and function. Learn why architects, interior
